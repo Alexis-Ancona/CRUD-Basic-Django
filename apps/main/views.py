@@ -21,3 +21,8 @@ class PersonUpdate(UpdateView):
     form_class = PersonForm
     template_name = 'create_person.html'
     success_url = reverse_lazy('index')
+
+class PersonDelete(DeleteView):
+    model = Person
+    template_name = 'person_confirm_delete.html'
+    success_url = reverse_lazy('index')
