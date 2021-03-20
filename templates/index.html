@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact List</title>
+    <title> {% block title %} Contact List {% endblock title %} </title>
 </head>
 <body>
+    {% block body %}
     <h1>Index Template</h1>
     <ul>
         {% for person in persons_list %}
         <li>{{ person }} {{ person.lastName }} | {{ person.email }} </li>
         {% endfor %}
     </ul>
+    {% endblock body %}
 </body>
 </html>
