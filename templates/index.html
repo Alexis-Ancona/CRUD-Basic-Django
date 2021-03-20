@@ -9,10 +9,11 @@
     {% block body %}
     <h1>Index Template</h1>
     <ul>
-        {% for person in persons_list %}
+        {% for person in object_list %}
         <li>{{ person }} {{ person.lastName }} | {{ person.email }} </li>
         {% endfor %}
     </ul>
+    <a href="{% url 'createPerson' %}">Crear</a>
     {% endblock body %}
 </body>
 </html>

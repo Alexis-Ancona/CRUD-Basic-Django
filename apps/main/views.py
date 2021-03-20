@@ -1,11 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 from .models import Person
+from .forms import PersonForm
 # Create your views here.
 
-def index(request):
-    pl = Person.objects.all() 
-    ctx = {'persons_list': pl}
-    return render(request, 'index.html', ctx)
-
-def createPerson(request):
-    return render(request, 'create_person.html')
+#/
+class PersonList(ListView):
+    model = Person
+    template_name = 'index.html'
+#/create/
+class PersonCreate(CreateView):
+    model = Person
+    form_class = PersonForm
+    template_name = 'create_person.html'
+    success_url = reverse_lazy('index')
+#/update
+class PersonUpdate(UpdateView):
+    model = Person
+    form_class = PersonForm
+    template_name = 'create_person.html'
+    success_url = reverse_lazy('index')

@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.main.views import index, createPerson
+from apps.main.views import PersonList, PersonCreate, PersonUpdate
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name = 'index'),
-    path('create/', createPerson, name = 'createPerson'),
+    path('', PersonList.as_view(), name = 'index'),
+    path('create/', PersonCreate.as_view(), name = 'createPerson'),
+    path('update/<int:pk>', PersonUpdate.as_view(), name = 'updatePerson'),
 ]
